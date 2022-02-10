@@ -41,3 +41,18 @@ const { join } = require("path");
 const { PREFIX } = require("./config.json");
 const client = new Client({ disableMentions: "everyone" })
 
+client.on("ready", () => {
+   function randomStatus() {
+ let status = [`${BOT_STATUS2}`,`${BOT_STATUS3}`, `${BOT_PREFIX}play ON ${client.guilds.cache.size} Servers`]
+let rstatus = Math.floor(Math.random() * status.length);
+
+client.user.setActivity(status[rstatus], {type: `${BOT_PRESENCE}` });
+}; setInterval(randomStatus, 30000)
+
+console.log('Bot is ready to play songs !')
+})
+client.on("warn", (info) => console.log(info));
+client.on("error", console.error);
+
+
+
